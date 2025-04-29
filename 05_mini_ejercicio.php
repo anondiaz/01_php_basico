@@ -14,7 +14,7 @@
 // --------------------
 $mayoriaEdad = 18;
 $edad = 24;
-$nombre = "Fulanito";
+$nombre = "Menganito";
 
 if ($edad > $mayoriaEdad) {
     $difEdad = $edad - $mayoriaEdad;
