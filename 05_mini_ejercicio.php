@@ -64,6 +64,87 @@ $promedioFruta = "El precio promedio de la fruta es de $promedioFruta" ;
 
 // echo($promedioFruta);
 
+// Tenemos una fruteria y vamos a vender y comprar frutas.
+// Necesitamos una función para vender frutas y otra para comprar frutas
+
+$frutas = [
+["nombre" => "cereza", "precio" => 9.5, "stock_kg" => 20],
+["nombre" => "naranja", "precio" => 2.5, "stock_kg" => 40],
+["nombre" => "platano", "precio" => 4.35, "stock_kg" => 35],
+["nombre" => "kiwi", "precio" => 5.60, "stock_kg" => 10],
+["nombre" => "manzana", "precio" => 2.25, "stock_kg" => 25]
+];
+
+// Para vender la fruta vender_fruta(fruta, cantidad)
+// Venta de cerezas 5.0 Kg x 9.5 = 47.5€
+// debe actualizar el array $frutas
+
+function vender_fruta ( $frutaV, $cantidadV, &$frutas){
+// $frutaV = "manzana" ;
+// $cantidadV = 3.5;
+    for ($i = 0; $i < count($frutas); $i++) {
+        // echo $frutas[$i]["stock_kg"]."<br>" ;
+        // print_r ($i. $frutas[$i])."<br>";
+        foreach ($frutas[$i] as $clave => $valor) {
+            // echo "$clave -> $valor"."<br>";
+            // echo $i;
+            if ( $valor == $frutaV ){
+                // echo "Hola";
+                $cantidadVendida = $cantidadV ;
+                // echo $cantidadVendida;
+                // echo $valor;
+                $precioF = $frutas[$i]["precio"];
+                // echo $precioF;
+                $importeVenta = $cantidadVendida * $precioF;
+                // echo $importeCompra;
+                $importeVenta = "Venta de $valor $cantidadVendida Kg x $precioF = $importeVenta €";
+                $frutaRestante = $frutas[$i]["stock_kg"] - $cantidadVendida;
+                $frutas[$i]["stock_kg"] = $frutaRestante ;
+                // echo $frutas[$i]["stock_kg"]."<br>" ;
+            }        
+            // echo $frutas[$i]["stock_kg"]."<br>" ;
+            // echo "$clave -> $valor"."<br>";
+        }
+    }
+    return $importeVenta;
+}
+
+$resultadoVenta = vender_fruta("manzana", 3, $frutas );
+
+for ($i = 0; $i < count($frutas); $i++) {
+    echo $frutas[$i]["stock_kg"]."<br>" ;
+}
+echo("----------"."<br>");
+
+// Para comprar comprar_frutas(fruta, cantidad, precio)
+// Pero si la fruta no está la añadiremos
+
+    $frutaC = "pera" ;
+    $cantidadC = 20 ;
+    $precioC = 5.5 ;
+
+    for ($i = 0; $i < count($frutas); $i++) {
+        if ($frutas[$i]["nombre"] != $frutaC) {
+            // echo $frutas[$i]["nombre"]."<br>";
+            $frutas[] = 
+            ["nombre" => $frutaC, "precio" => $precioC, "stock_kg" => $cantidadC];
+            break;
+        } else {
+            
+            echo "Existe";
+        }
+
+    }
+
+    // for ($i = 0; $i < count($frutas); $i++) {
+    //     echo $frutas[$i]["nombre"]."<br>" ;
+    //     echo $frutas[$i]["precio"]."<br>" ;
+    //     echo $frutas[$i]["stock_kg"]."<br>" ;
+    // }
+
+    print_r($frutas);
+
+echo("----------"."<br>");
 ?>
 
 <!DOCTYPE html>
@@ -85,5 +166,9 @@ $promedioFruta = "El precio promedio de la fruta es de $promedioFruta" ;
     <h3><?php echo $frutaMasCara ?></h3>
     <h2>Ejercicio 3</h2>
     <h3><?php echo $promedioFruta ?></h3>
+    <h2>Ejercicio 4</h2>
+    <h3><?php echo $resultadoVenta ?></h3>
+    <h2>Ejercicio 5</h2>
+    <h3><?php echo $resultadoCompra ?></h3>
 </body>
 </html>

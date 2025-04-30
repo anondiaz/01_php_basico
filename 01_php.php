@@ -52,6 +52,37 @@ $unBooleano = true; // false
 $PI = 3.1416; // Las constante suele tener el nombre en mayúsculas
 $PI = 6.28; // Pero en este caso no lo hemos declarado como constante
 
+echo "--------------------"."<br>";
+
+$num1 = '10';
+$num2 = 2;
+
+echo "Concatenacion : ". $num1 . $num2 ; // 102
+echo "<br>";
+echo "Concatenacion : ". $num1 + $num2 ; // 12
+echo "<br>";
+
+echo "--------------------"."<br>";
+
+echo "OPERADORES LOGICOS"."<br>";
+echo "and (y) -> &&"."<br>";
+echo "or (o) -> ||"."<br>";
+echo "not (no) -> != !=="."<br>";
+
+echo "--------------------"."<br>";
+
+$num1 = 20 ;
+$num2 = 30 ;
+
+if ($num1 == 10 && $num2 == 20) {
+    echo "Se cumplen las dos condiciones"."<br>";
+}elseif ($num1 == 10 || $num2 == 20) {
+    echo "Se cumple una de las dos condiciones"."<br>";
+}else {
+    echo " No se cumple ninguna de las dos condiciones"."<br>";
+}
+
+echo "--------------------"."<br>";
 
 //
 // Funciona igual que javascript 
