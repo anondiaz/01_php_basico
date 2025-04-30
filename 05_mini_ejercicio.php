@@ -85,13 +85,18 @@ vender_fruta($frutas, "melon", 30);
 echo "<br>";
 echo("--------------------"."<br>");
 comprar_fruta($frutas, "pera", 30, 2);
+echo("--------------------"."<br>");
 print_r($frutas);
 echo "<br>";
 echo("--------------------"."<br>");
 vender_fruta($frutas, "pera", 15);
 vender_fruta($frutas, "cereza", 15);
+echo("--------------------"."<br>");
+print_r($frutas);
 echo "<br>";
 echo("--------------------"."<br>");
+comprar_fruta($frutas, "cereza", 30, 10);
+echo "<br>";
 
 function vender_fruta ( &$frutas, $nombre_fruta, $cantidad, ){
     // Definimos la disponibilidad en nula, es decir por defecto no la tenemos
@@ -108,16 +113,17 @@ function vender_fruta ( &$frutas, $nombre_fruta, $cantidad, ){
                 echo "<br>";
                 echo "Venta realizada de '$nombre_fruta': $cantidad kg x "
                 . $producto['precio'] 
-                . "€ = "
-                . ($cantidad * $producto['precio'] );
+                . "€/kg = "
+                . ($cantidad * $producto['precio'] )
+                . "€";
                 echo "<br>";
                 echo "<br>";
-                echo "Ahora quedan $stock_actualizado de '$nombre_fruta'";
+                echo "Ahora quedan $stock_actualizado kg de '$nombre_fruta'";
                 echo "<br>";
             } // Si no hay suficiente cantidad de fruta
             else {
                 echo "<br>";
-                echo "Has pedido $cantidad pero sólo tenemos ".$producto['stock_kg']." kg de la fruta '$nombre_fruta'";
+                echo "Has pedido $cantidad kg pero sólo tenemos ".$producto['stock_kg']." kg de '$nombre_fruta'";
                 echo "<br>";
 
             }
@@ -128,7 +134,7 @@ function vender_fruta ( &$frutas, $nombre_fruta, $cantidad, ){
     }
     if ($no_disponibilidad) {
         echo "<br>";
-        echo "No tenemos la fruta '$nombre_fruta'";
+        echo "No tenemos '$nombre_fruta'";
         echo "<br>";
 
     }
@@ -154,10 +160,13 @@ function comprar_fruta (&$frutas, $nombre_fruta, $cantidad, $precio) {
             // Mostraremos el mensaje de que hemos actualizado los datos de la fruta
             echo "<br>";
             echo "Actualizada fruta '$nombre_fruta', con precio $precio € y cantidad "
+            .$cantidad 
+            . " kg"
+            . ", en total ahora hay " 
             .$producto['stock_kg']
             . " kg" ;
             echo "<br>";
-            // También pondremos que ya tenemos la fruta
+            // También pondremos que ya tenemos la fruta para que no añada los nuevos datos
             $no_tengo_la_fruta = false;
             // Y salimos del if y del bucle
             break;
@@ -165,13 +174,18 @@ function comprar_fruta (&$frutas, $nombre_fruta, $cantidad, $precio) {
     }
     // Si no tenemos la fruta
     if ($no_tengo_la_fruta) { // Es decir si es verdadero
+        // Explicación de porque no se puede usar $producto
         echo "\$producto = ";
         print_r($producto);
         echo "<br>";
         echo "No podemos usar \$producto porque machacamos la fruta"."<br>";
-        // Añadimos el  nuevo 'producto' al array, aquí es una variable independiente y componemos el sub-array
+        // Así machacamos los datos del subarray al que corresponda en ese momento, lo indico más arriba
+        // $producto = ['nombre' => $nombre_fruta, 'precio' => $precio, 'stock_kg' => $cantidad];
+        // Añadimos el  nuevo 'producto' al array, ahora es una variable independiente y componemos el sub-array
         $producto_nuevo = ['nombre' => $nombre_fruta, 'precio' => $precio, 'stock_kg' => $cantidad];
-        // Añadimos al array principal $frutas el nuevo sub-array $producto
+        // De esta forma añadimos al array $producto, en este caso vuelve a añadir las peras
+        // $frutas[] = $producto;
+        // Añadimos al array principal $frutas el nuevo sub-array $producto_nuevo
         $frutas[] = $producto_nuevo;
         // Mostraremos el mensaje de que hemos añadido la nueva fruta
         echo "<br>";
@@ -183,9 +197,9 @@ function comprar_fruta (&$frutas, $nombre_fruta, $cantidad, $precio) {
     unset ($producto);
 }
 
+echo("--------------------"."<br>");
 print_r($frutas);
 echo "<br>";
-
 echo("--------------------"."<br>");
 ?>
 
@@ -208,10 +222,5 @@ echo("--------------------"."<br>");
     <h3><?php echo $frutaMasCara ?></h3>
     <h2>Ejercicio 3</h2>
     <h3><?php echo $promedioFruta ?></h3>
-    <h2>Ejercicio 4</h2>
-    <h3><?php echo $resultadoVenta ?></h3>
-    <h3><?php echo $informeVenta ?></h3>
-    <h2>Ejercicio 5</h2>
-    <h3><?php echo $resultadoCompra ?></h3>
 </body>
 </html>
