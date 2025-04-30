@@ -2,7 +2,7 @@
 
 echo saludar ("Steve")."<br>";
 
-echo "**************"."<br>";
+echo "--------------------"."<br>";
 
 $saludoMaria = saludar ("Maria");
 
