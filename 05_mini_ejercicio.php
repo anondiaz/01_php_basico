@@ -75,10 +75,6 @@ $frutas = [
 ["nombre" => "manzana", "precio" => 2.25, "stock_kg" => 25]
 ];
 
-// Para vender la fruta vender_fruta(fruta, cantidad)
-// Venta de cerezas 5.0 Kg x 9.5 = 47.5€
-// debe actualizar el array $frutas
-
 function vender_fruta ( $frutaV, $cantidadV, &$frutas){
 // $frutaV = "manzana" ;
 // $cantidadV = 3.5;
@@ -130,7 +126,7 @@ echo("----------"."<br>");
             ["nombre" => $frutaC, "precio" => $precioC, "stock_kg" => $cantidadC];
             break;
         } else {
-            
+
             echo "Existe";
         }
 
