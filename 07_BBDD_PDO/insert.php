@@ -9,6 +9,17 @@ require_once 'connection.php';
 // echo "<br>";
 // echo $_POST['color'];
 
+$arrayColors = [
+    "rojo" => "red",
+    "azul" => "blue",
+    "verde" => "green",
+    "amarillo" => "yellow",
+    "rosa" => "pink",
+    "gris" => "grey",
+    "blanco" => "white",
+    "negro" => "black"
+];
+
 // Definir la querie como string
 $insert = "INSERT INTO colores(usuario, color) VALUES (?, ?)";
 
@@ -16,7 +27,7 @@ $insert = "INSERT INTO colores(usuario, color) VALUES (?, ?)";
 $insertPreparacion = $conn -> prepare($insert);
 
 //Ejecución, '->' con espacios antes y después opcional
-$insertPreparacion -> execute([$_POST['usuario'],$_POST['color']]);
+$insertPreparacion -> execute([$arrayColors[$_POST['usuario']],$_POST['color']]);
 
 // Limpiamos el insert
 $insertPreparacion = null;
