@@ -30,8 +30,11 @@ $preparacion->execute();
 $arrayFilas = $preparacion->fetchAll();
 
 // print_r($arrayFilas);
-
+// Declaramos un color de letra base
 $color = "white";
+
+// Cerramos la conexión
+$conn = null;
 
 // echo "<br>"."-----------------"."<br>";
 ?>

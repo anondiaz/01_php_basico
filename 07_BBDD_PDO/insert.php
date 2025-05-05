@@ -27,7 +27,7 @@ $insert = "INSERT INTO colores(usuario, color) VALUES (?, ?)";
 $insertPreparacion = $conn -> prepare($insert);
 
 //Ejecución, '->' con espacios antes y después opcional
-$insertPreparacion -> execute([$arrayColors[$_POST['usuario']],$_POST['color']]);
+$insertPreparacion -> execute([$arrayColors[$_POST['usuario']], $_POST['color']]);
 
 // Limpiamos el insert
 $insertPreparacion = null;
@@ -35,4 +35,5 @@ $insertPreparacion = null;
 // Cerramos la conexión
 $conn = null;
 
+// Recargamos la pagina index.php
 header('location:index.php');
