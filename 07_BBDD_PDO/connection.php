@@ -3,11 +3,17 @@
 // Conexión a BBDD MySQL mediante PDO
 
 // $server_name = "127.0.0.1";
+// $server_name = "localhost";
+// $bbdd = "colores";
+// $port = 3306;
+// $user = "root";
+// $password = "";
+
 $server_name = "localhost";
 $bbdd = "colores";
-$port = 3306;
+$port = 3307;
 $user = "root";
-$password = "";
+$password = "CIEF1234";
 
 try {
 
