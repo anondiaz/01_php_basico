@@ -52,3 +52,10 @@ form {
         color: white;
     }
 }
+.items {
+    display: flex;
+    justify-content: space-between;
+    a{
+        color: inherit;
+    }
+}

@@ -1,6 +1,8 @@
 <?php
 
 require_once 'connection.php';
+require_once 'traduccion_colores.php';
+
 // echo "Soy insert.php";
 
 // print_r($_POST); // No muestra los datos en la barra de navegacion
@@ -9,25 +11,14 @@ require_once 'connection.php';
 // echo "<br>";
 // echo $_POST['color'];
 
-$arrayColors = [
-    "rojo" => "red",
-    "azul" => "blue",
-    "verde" => "green",
-    "amarillo" => "yellow",
-    "rosa" => "pink",
-    "gris" => "grey",
-    "blanco" => "white",
-    "negro" => "black"
-];
-
 // Definir la querie como string
-$insert = "INSERT INTO colores(usuario, color) VALUES (?, ?)";
+$insert = "INSERT INTO colores(color, usuario) VALUES (?, ?)";
 
 // Preparación, '->' con espacios antes y después opcional
 $insertPreparacion = $conn -> prepare($insert);
 
 //Ejecución, '->' con espacios antes y después opcional
-$insertPreparacion -> execute([$arrayColors[$_POST['usuario']], $_POST['color']]);
+$insertPreparacion -> execute([$arrayColors[$_POST['color']], $_POST['usuario']]);
 
 // Limpiamos el insert
 $insertPreparacion = null;
