@@ -1,6 +1,7 @@
 <?php
 
-require_once 'connection.php';
+// require_once 'connection.php';
+require_once 'connection2.php';
 require_once 'traduccion_colores.php';
 
 // echo "Soy insert.php";

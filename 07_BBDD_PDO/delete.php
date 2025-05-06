@@ -1,6 +1,7 @@
 <?php
 
-require_once 'connection.php';
+// require_once 'connection.php';
+require_once 'connection2.php';
 
 // Nos devuelve el numero del id del enlace que apunta a esta pagina
 // es decir resuelve la variable que se encuentra allí y es lo que nos retorna
