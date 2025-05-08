@@ -1,4 +1,6 @@
 <?php
+session_start(); // Seguridad, Establecemos que se inicie una sesion
+$_SESSION['session-token'] = bin2hex(random_bytes(32)); // Seguridad crearmos un numero aleatorio dificil de descifrar
 
 // Formas de llamar a un fichero en PHP, "introduce" el codigo en el punto donde se halle
 // include 'nombre_fichero.php'; // Usar el error como un warning, no detendremos el script
@@ -68,15 +70,24 @@ $conn = null;
             <h2>Nuestros usuarios</h2>
             <?php foreach ($arrayFilas as $fila) : ?>
 
-                <?php if ( $fila['color'] == "white" || $fila['color'] == "yellow" || $fila['color'] == "pink" || $fila['color'] == "grey" )  {
+                <?php
+                // Más sencillo de leer y gestionar
+                $color = "white";
+                $arrayLetrasOscuras = ["white", "yellow", "pink", "gray", "grey"];
+                if (in_array($fila['color'], $arrayLetrasOscuras)) {
                     $color = "black";
-                 } else {
-                    $color = "white";
-                 }
+                }
+                
+                // Forma  con if
+                // if ( $fila['color'] == "white" || $fila['color'] == "yellow" || $fila['color'] == "pink" || $fila['color'] == "grey" )  {
+                //     $color = "black";
+                //  } else {
+                //     $color = "white";
+                //  }
                   ?>
                 <div class="items" style="background-color:<?= $fila['color'] ?>; color: <?= $color?>">
                     <p>
-                        <?= $fila['usuario'] ?>
+                        <?= htmlspecialchars($fila['usuario'], ENT_QUOTES, 'UTF-8')  ?>  <!-- Convertimos lo que nos viene en string podemos revisarlo en w3schools-->
                     </p>
                     <span>
                         <a href="index.php?id=<?= $fila['id_color']?>&user= <?= str_replace(" ", "%20", $fila['usuario'])?>&color=<?= $fila['color']?>"><i class="fa-solid fa-user-pen"></i></a>
@@ -117,6 +128,11 @@ $conn = null;
                  <h2>Dinos tu color preferido</h2>
                  <form action="insert.php" method="post">
                     <fieldset>
+                         <!-- Token de sesión -->
+                        <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>"> <!-- Seguridad, añadimos un input oculto con la session para enviarlo al fichero -->
+                        <!-- HoneyPot -->
+                        <input type="text" name="web" style="display:none" > <!-- Seguridad, añadimos un input con estilo display:none, para que los humanos no los vean, pero si los robots -->
+
 
                         <div>
                             <label for="usuario">Tu nombre : </label>

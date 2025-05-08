@@ -3,6 +3,18 @@
 require_once 'connection.php';
 require_once 'traduccion_colores.php';
 
+//Token de sesión
+session_start();
+if ( !hash_equals($_SESSION['session-token'], $_POST['session-token'])) {
+    die("Token inválido");
+}
+// HoneyPot
+if ( !empty($_POST['web'])){
+    die("bot detectado");
+}
+
+
+
 // echo "Soy insert.php";
 
 // print_r($_POST); // No muestra los datos en la barra de navegacion
@@ -10,6 +22,13 @@ require_once 'traduccion_colores.php';
 // echo $_POST['usuario'];
 // echo "<br>";
 // echo $_POST['color'];
+$user = trim($_POST['usuario']); // Seguridad, conviene eliminar los espacios en blanco delante y detrás
+$color = trim($_POST['color']);
+
+if(empty($user) || empty($color)){ // Seguridad, comprobamos si esta vacio
+    header('location:index.php'); // Y si está vacio reenviamos al inicio
+    exit();                        // Y salimos del if
+}
 
 // Definir la querie como string
 $insert = "INSERT INTO colores(color, usuario) VALUES (?, ?)";
@@ -18,7 +37,7 @@ $insert = "INSERT INTO colores(color, usuario) VALUES (?, ?)";
 $insertPreparacion = $conn -> prepare($insert);
 
 //Ejecución, '->' con espacios antes y después opcional
-$insertPreparacion -> execute([$arrayColors[$_POST['color']], $_POST['usuario']]);
+$insertPreparacion -> execute([$color, $user]);
 
 // Limpiamos el insert
 $insertPreparacion = null;
