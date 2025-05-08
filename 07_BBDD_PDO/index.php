@@ -8,7 +8,9 @@ $_SESSION['session-token'] = bin2hex(random_bytes(32)); // Seguridad crearmos un
 // include_once 'nombre_fichero.php';  // Usar el error como un warning, no detendremos el script, solo realiza la conexión una vez
 // require_once 'nombre_fichero.php'; // Usar el error como crítico y detiene el script, solo realiza la conexión una vez
 
-require_once 'connection.php';
+// require_once 'connection.php';
+require_once 'connection2.php';
+// require_once 'connection3.php';
 require_once 'traduccion_colores.php';
 // echo "Soy el index.php";
 // echo "<br>"."-----------------"."<br>";
