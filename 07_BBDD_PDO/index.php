@@ -8,8 +8,8 @@ $_SESSION['session-token'] = bin2hex(random_bytes(32)); // Seguridad crearmos un
 // include_once 'nombre_fichero.php';  // Usar el error como un warning, no detendremos el script, solo realiza la conexión una vez
 // require_once 'nombre_fichero.php'; // Usar el error como crítico y detiene el script, solo realiza la conexión una vez
 
-// require_once 'connection.php';
-require_once 'connection2.php';
+require_once 'connection.php';
+// require_once 'connection2.php';
 // require_once 'connection3.php';
 require_once 'traduccion_colores.php';
 // echo "Soy el index.php";
@@ -62,6 +62,7 @@ $conn = null;
     <title>Colores</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/colores.js"></script>
 </head>
 <body>
     <header>
@@ -128,7 +129,8 @@ $conn = null;
             
 
                  <h2>Dinos tu color preferido</h2>
-                 <form action="insert.php" method="post">
+                 <!-- <form action="insert.php" method="post"> -->
+                 <form name="formInsert">   
                     <fieldset>
                          <!-- Token de sesión -->
                         <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>"> <!-- Seguridad, añadimos un input oculto con la session para enviarlo al fichero -->
@@ -139,14 +141,16 @@ $conn = null;
                         <div>
                             <label for="usuario">Tu nombre : </label>
                             <input type="text" name="usuario" id="usuario">
+                            <p id="errorUsuario"></p>
                         </div>
                         <div>
                             <label for="color">Tu color : </label>
                             <input type="text" name="color" id="color">
+                            <p id="errorColor"></p>
                         </div>
                         <div>
                             <button type="submit">Enviar datos</button>
-                            <button type="reset">Limpiar formulario</button>
+                            <button type="reset">Limpiar formulario</button>                           
                         </div>
 
                     </fieldset>
