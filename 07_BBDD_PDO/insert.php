@@ -17,7 +17,7 @@ if ( !empty($_POST['web'])){
 
 
 
-// echo "Soy insert.php";
+echo "Soy insert.php";
 
 // print_r($_POST); // No muestra los datos en la barra de navegacion
 // print_r($_GET); // Muestra los datos en la barra de navegacion

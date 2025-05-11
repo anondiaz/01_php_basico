@@ -1,35 +1,24 @@
 <?php
 
-// Conexión a BBDD MySQL mediante PDO
+// Seleccionaremos la conexión en función de la ubicación
+// require_once 'connection1.php'; // 172.16.20.0/24 IP CIEF
+require_once 'connection2.php'; // 10.10.10.0/24 IP CASA 1
+// require_once 'connection3.php'; // 10.10.10.0/24 IP CASA 2
 
-// $server_name = "127.0.0.1";
-// $server_name = "localhost";
-// $bbdd = "colores";
-// $port = 3306;
-// $user = "root";
-// $password = "";
+// Obtenemos la ip del servidor, pero es localhost ipv6 :(
+// En otro momento ya profundizaremos en este tema
+// $server_ip = $_SERVER['SERVER_ADDR'] ?? gethostbyname(gethostname());
 
-$server_name = "localhost";
-$bbdd = "colores";
-$port = 3307;
-$user = "root";
-$password = "CIEF1234";
+// // Vamos a crear un array con los entornos y las redes en formato cidr
+// $entornos = [
+//     'cief'  => '172.16.20.0/24',  // La red de CIEF
+//     'casa1' => '10.10.10.0/24',     // La red en mi casa
+//     'casa2' => '192.168.10.0/24', // Por si aca
+// ];
 
-try {
-
-    $conn = new PDO ("mysql:host=$server_name;port=$port;dbname=$bbdd", $user, $password);
-
-    // echo "¡Conectados a $server_name $bbdd !<br>";
-
-    // foreach ($conn -> query('SELECT * FROM colores') as $fila) {
-    // print_r($fila);
-    // echo "<br>";
-    // echo $fila['usuario'];
-    // }
-
-} catch (PDOException $err) { // Mostrar el error de conexión
-    
-    echo "Error $err";
-
-}
+// echo "<br>"."--------------------"."<br>";
+// echo $server_ip;
+// echo "<br>"."--------------------"."<br>";
+// print_r($entornos);
+// echo "<br>"."--------------------"."<br>";
 
