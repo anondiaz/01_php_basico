@@ -1,6 +1,8 @@
 <?php
 
+// Inicimos una session
 session_start();
+// Llamamos al fichero de conexión
 require_once 'pdo_bind_connection.php';
 
 ?>
@@ -8,13 +10,16 @@ require_once 'pdo_bind_connection.php';
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Las etiquetas meta y enlaces a ficheros las llamamos con php -->
     <?php include_once 'etiquetas_meta.php'; ?>
     <title>Colores</title>
 </head>
 <body>
     <header>
+        <!-- Creamos un menú -->
         <nav class="index-nav">
             <ul>            
+                <!-- Tenemos dos enlaces en el menú para llamar a las correspondientes páginas -->
                 <li><a href="crear_cuenta.php">Crear cuenta</a></li>
                 <li><a href="index.php">Iniciar sesión</a></li>
 
@@ -22,7 +27,9 @@ require_once 'pdo_bind_connection.php';
         </nav>
     </header>
     <main class="index-main">
+        <!-- Mostraremos un dialog para el login -->
     <dialog id="login" open closedby="true">
+        <!-- Llamamos al login.php con el formulario-->
                 <form action="login.php" method="post">
             <fieldset>
                 <h1>Iniciar sesión</h1>
@@ -36,11 +43,13 @@ require_once 'pdo_bind_connection.php';
                 </div>
                  
                 <div class="error_cuenta">
+                    <!-- En caso de error en los datos mostramos mensaje con un condicional if -->
                     <?php if ($_SESSION['error_cuenta']): ?>
                         <p>Error en los datos</p>
                     <?php endif; ?>
                 </div>
                 <div class="error_cuenta">
+                    <!-- En caso de error en los datos mostramos mensaje con un condicional if -->
                     <?php if ($_SESSION['user_inexistente']): ?>
                         <p>Usuario o contraseña incorrectos</p>
                     <?php endif; ?>
@@ -49,6 +58,7 @@ require_once 'pdo_bind_connection.php';
                     <button type="submit">Enviar</button>
                     <button type="reset">Borrar</button>
                 </div>
+                <!-- Ponemos un enlace para volver al inicio -->
                 <a href="index.php">Volver</a>
 
             </fieldset>
@@ -60,5 +70,6 @@ require_once 'pdo_bind_connection.php';
 </body>
 </html>
 <?php
+// Reseteamos las variables a false para que en la siguiente carga no se muestre el mensaje
 $_SESSION['error_cuenta'] = false;
 $_SESSION['user_inexistente'] = false;
