@@ -26,3 +26,29 @@ main {
         border: 1px solid black;
     }
 }
+
+.index-main {
+    background-color: aqua;
+}
+.index-nav {
+    height: 5rem;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    
+    ul {
+display: flex;
+    justify-content: right;
+    gap: 1rem;
+    list-style: none;
+    a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            background-color: blue;
+            color:white;
+        }
+    }
+    }
+}
+

@@ -24,5 +24,36 @@ if (empty($usuario) || empty($password) || empty($password2)){
     exit();    
 }
 
+$usuario = htmlspecialchars($usuario, ENT_QUOTES, 'UTF-8');
+$password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
+$password2 = htmlspecialchars($password2, ENT_QUOTES, 'UTF-8');
+$email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+$telefono = htmlspecialchars($telefono, ENT_QUOTES, 'UTF-8');
+
+echo $usuario;
+
+if ($password !== $password2) {
+     $_SESSION['error_cuenta'] = true;
+    header('Location: crear_cuenta.php');
+    exit();    
+}
+
+$select = "SELECT * FROM usuarios WHERE usuario = :usuario";
+$stmt = $pdo->prepare($select);
+$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+$stmt->execute();
+$usuarioExistente = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($usuarioExistente) {
+    $_SESSION['error_repe'] = true;
+    header('Location: crear_cuenta.php');
+    exit(); 
+} // else {
+ // echo "El usuario no existe<br>";
+// }
+
+$hash = password_hash($password, PASSWORD_DEFAULT);
+
+
 
 echo "De momento todo Ok <br>";
