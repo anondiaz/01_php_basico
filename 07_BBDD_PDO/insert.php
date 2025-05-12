@@ -5,10 +5,19 @@ require_once 'connection.php';
 // require_once 'connection3.php';
 require_once 'traduccion_colores.php';
 
+// try {
+
+
+// } catch (Exception $e) {
+
+// }
+
 //Token de sesión
 session_start();
 if ( !hash_equals($_SESSION['session-token'], $_POST['session-token'])) {
-    die("Token inválido");
+    // die("Token inválido"); // Se usa para desarrollo
+    $_SESSION['error_sesion'] = true;
+    header('location:index.php');
 }
 // HoneyPot
 if ( !empty($_POST['web'])){

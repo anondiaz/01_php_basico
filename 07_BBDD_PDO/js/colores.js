@@ -42,8 +42,20 @@ formInsert.addEventListener('submit', (e) => {
         return;
     }
 
-        alert ("Hoy es viernes");
+        // alert ("Hoy es viernes");
 
+    const datos = new URLSearchParams();
+    datos.append("color", color);
+    datos.append("usuario", usuario);
+    datos.append("session-token", sessionToken);
+    datos.append("web", web);
+    fetch("../insert.php", {
         
+
+    })
+        
+        
+    
+
 
 })

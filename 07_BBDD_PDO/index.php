@@ -156,9 +156,16 @@ $conn = null;
                     </fieldset>
 
                  </form>
+<?php if ($_SESSION['error_session'] = false) : ?>
+    <p></p>
+
+ <?php endif ; ?>
                  <?php endif;  ?>
         </section>
     </main>
 </body>
 <script src="js/colores.js"></script>
 </html>
+<?php
+
+$_SESSION['error_session'] = false;
