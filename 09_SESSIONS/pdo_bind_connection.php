@@ -1,25 +1,23 @@
 <?php
 
-// php -S localhost:8001
-// Fichero de conexión : pdo_bind_connection.php
-$host = 'localhost';
-$dbname = 'colores';
-$port = 3307;
-$username = 'colores';
-$password = 'colores';
-$charset = 'utf8mb4';
-$dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+// Seleccionaremos la conexión en función de la ubicación
+// require_once 'connection1.php'; // 172.16.20.0/24 IP CIEF
+require_once 'connection2.php'; // 10.10.10.0/24 IP CASA 1
+// require_once 'connection3.php'; // 10.10.10.0/24 IP CASA 2
 
-try {
-    $pdo = new PDO($dsn, $username, $password, $options);
-    // echo "Conexión exitosa a la base de datos.";
-} catch (PDOException $e) {
-    throw new PDOException($e->getMessage(), (int)$e->getCode());
-    echo "Error de conexión: " . $e->getMessage();
-    exit();
-}
+// Obtenemos la ip del servidor, pero es localhost ipv6 :(
+// En otro momento ya profundizaremos en este tema
+// $server_ip = $_SERVER['SERVER_ADDR'] ?? gethostbyname(gethostname());
+
+// // Vamos a crear un array con los entornos y las redes en formato cidr
+// $entornos = [
+//     'cief'  => '172.16.20.0/24',  // La red de CIEF
+//     'casa1' => '10.10.10.0/24',     // La red en mi casa
+//     'casa2' => '192.168.10.0/24', // Por si aca
+// ];
+
+// echo "<br>"."--------------------"."<br>";
+// echo $server_ip;
+// echo "<br>"."--------------------"."<br>";
+// print_r($entornos);
+// echo "<br>"."--------------------"."<br>";
