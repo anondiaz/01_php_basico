@@ -14,6 +14,7 @@ require_once 'pdo_bind_connection.php';
 </head>
 
 <body>
+<<<<<<< Updated upstream
     <main>
         <form action="insert_user.php" method="post">
             <fieldset>
@@ -64,3 +65,57 @@ require_once 'pdo_bind_connection.php';
 
 $_SESSION['error_cuenta'] = false;
 $_SESSION['user_repe'] = false;
+=======
+<!-- <h1>Prueba</h1> -->
+<main>
+    <form action="insert_user.php" method="post">
+        <fieldset>
+            <h1>Crear cuenta</h1>
+            <div>
+                <label for="usuario">Nombre : </label>
+                <input type="text" name="usuario" id="usuario">
+            </div>
+            <div>
+                <label for="password">Contraseña: </label>
+                <input type="text" name="password" id="password">
+            </div>
+            <div>
+                <label for="password2">Repita la contraseña : </label>
+                <input type="text" name="password2" id="password2">
+            </div>
+            <div>
+                <label for="email">Email : </label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div>
+                <label for="telefono">Telefono : </label>
+                <input type="text" name="telefono" id="telefono">
+            </div>
+            <div class="error_cuenta">
+            <?php if($_SESSION['error']): ?>
+                <p>Error en los datos</p>
+            <?php endif;?>
+            </div>
+            <div class="error_cuenta">
+            <?php if($_SESSION['user_repe']): ?>
+                <p>Usuario o contraseña invalidos</p>
+            <?php endif;?>
+            </div>
+            <div class="botones">
+                <button type="submit">Enviar datos</button>
+                <button type="reset">Borrar datos</button>
+            </div>
+            <a href="index.php">Volver</a>
+        </fieldset>
+    </form>
+</main>
+
+    
+</body>
+</html>
+
+<?php 
+
+$_SESSION['error_cuenta'] = false;
+$_SESSION['user_repe'] = false;
+>>>>>>> Stashed changes
