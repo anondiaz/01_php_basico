@@ -54,5 +54,9 @@ if (!password_verify($password, $usuarioExistente['password'])) {
 // Si es ok, mostramos un mensaje
 echo "Todo OK";
 
+
+
 // O redirigimos a otra página
-// header('Location: ../07_BBDD_PDO/index.php');
+$_SESSION['usuario'] = $usuarioExistente['$usuario'];
+$_SESSION['id_usuario'] = $usuarioExistente['id_usuario'];
+header('Location: colores/index.php');

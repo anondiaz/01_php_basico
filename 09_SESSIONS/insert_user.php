@@ -3,7 +3,7 @@
 session_start();
 require_once 'pdo_bind_connection.php';
 
-// Verificar lo que llega a insert_user.php, si esta establecido y no está ¿vacio?
+// Verificar lo que llega a insert_user.php, si esta establecido y que la variable exista
 $verificarUsuario = isset($_POST['usuario']) && $_POST['usuario'];
 $verificarpassword = isset($_POST['password']) && $_POST['password'];
 $verificarpassword2 = isset($_POST['password2']) && $_POST['password2'];
@@ -56,7 +56,7 @@ if ($usuarioExistente) {
     exit();
 } 
 
-// Ciframos la contraseña con ¿bcrypt?
+// Ciframos la contraseña con bcrypt
 $hash = password_hash($password, PASSWORD_DEFAULT);
 // echo $hash . "<br>";
 

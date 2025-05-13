@@ -14,7 +14,7 @@ require_once 'connection.php';
 require_once 'traduccion_colores.php';
 // echo "Soy el index.php";
 // echo "<br>"."-----------------"."<br>";
-// foreach ($conn -> query('SELECT * FROM colores') as $fila) {
+// foreach ($pdo -> query('SELECT * FROM colores') as $fila) {
 //     print_r($fila);
 //     echo "<br>";
 //     echo $fila['usuario'];
@@ -23,10 +23,11 @@ require_once 'traduccion_colores.php';
 // echo "<br>"."-----------------"."<br>";
 
 // Definir la querie como string
-$select = "SELECT * FROM colores";
+$select = "SELECT * FROM colores where id_usuario = :id_usuario";
 
 // Preparación, '->' con espacios antes y después opcional
-$preparacion = $conn->prepare($select);
+$preparacion = $pdo->prepare($select);
+$preparacion ->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
 
 //Ejecución, '->' con espacios antes y después opcional
 $preparacion->execute();
@@ -49,7 +50,7 @@ if ($_GET) {
 }
 
 // Cerramos la conexión
-$conn = null;
+$pdo = null;
 
 // echo "<br>"."-----------------"."<br>";
 ?>
@@ -66,7 +67,15 @@ $conn = null;
 </head>
 <body>
     <header>
-        <h1>Nuestros colores preferidos</h1>
+        <div>
+            <h1>Nuestros colores preferidos</h1>
+            <p>
+                <span>Hola <?= $_SESSION['usuario'] ?></span>
+                <span><a href="../index.php">Volver atrás</a></span>
+            </p>
+            
+        </div>
+        
     </header>
     <main>
         <section>
@@ -104,7 +113,7 @@ $conn = null;
         <section>
 
             <?php if ($_GET ) : ?>
-                <h2>Modifica tus datos</h2>     
+                <h2>Modifica tus datos</h2>  
                 <form action="update.php" method="post">
                     <fieldset>
                     <input type="text" name="id" value="<?= $_GET['id'] ?>" hidden >
@@ -134,6 +143,7 @@ $conn = null;
                     <fieldset>
                          <!-- Token de sesión -->
                         <input type="hidden" name="session-token" value="<?= $_SESSION['session-token'] ?>"> <!-- Seguridad, añadimos un input oculto con la session para enviarlo al fichero -->
+                        <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>">
                         <!-- HoneyPot -->
                         <input type="text" name="web" style="display:none" > <!-- Seguridad, añadimos un input con estilo display:none, para que los humanos no los vean, pero si los robots -->
 
@@ -157,7 +167,7 @@ $conn = null;
 
                  </form>
 <?php if ($_SESSION['error_session'] = false) : ?>
-    <p>Error en la sesión</p>
+    <p>error de sesion</p>
 
  <?php endif ; ?>
                  <?php endif;  ?>
