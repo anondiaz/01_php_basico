@@ -77,8 +77,7 @@ USE colores;
 ALTER TABLE colores
 ADD COLUMN id_usuario INT NOT NULL DEFAULT 1 ;
 
-INSERT INTO colores (color, usuario, id_usuario) VALUES ("negro","Batman", 2);
-INSERT INTO colores (usuario, color, id_usuario) VALUES ("Superman", "azul", 2);
-INSERT INTO colores (usuario, color, id_usuario) VALUES ("Vilma", "blanco", 3);
-INSERT INTO colores (usuario, color, id_usuario) VALUES ("Pedro", "negro", 3);
-
+INSERT INTO colores (color, usuario, id_usuario) VALUES ("black","Batman", 2);
+INSERT INTO colores (usuario, color, id_usuario) VALUES ("Superman", "blue", 2);
+INSERT INTO colores (usuario, color, id_usuario) VALUES ("Vilma", "white", 3);
+INSERT INTO colores (usuario, color, id_usuario) VALUES ("Pedro", "black", 3);
