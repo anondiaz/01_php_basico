@@ -18,7 +18,7 @@ require_once 'pdo_bind_connection.php';
     <title>Colores</title>
 </head>
 <body>
-    <header><h1>Acceso usuarios</h1><p>Hola <?= $_SESSION['usuario'] ?></p>
+    <?php /* <!-- <header><h1>Acceso usuarios</h1><p>Hola <?= $_SESSION['usuario'] ?></p>
         <!-- Creamos un menú -->
         <nav class="index-nav">
             <ul>            
@@ -29,7 +29,8 @@ require_once 'pdo_bind_connection.php';
 
             </ul>
         </nav>
-    </header>
+    </header> --> */?>
+    <?php include_once 'modulos/header.php' ?>
     <main class="index-main">
         <!-- Mostraremos un dialog para el login -->
     <dialog id="login" open closedby="any">

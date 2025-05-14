@@ -69,4 +69,25 @@ formInsert.addEventListener('submit', (e) => {
   });
 
     })
-        
+  
+const tiempoInactividad = 5000; // 60000ms = 1 minuto, se mide en milisegundos (minutos x 60 x 1000)
+
+let temporizador ;
+
+function redirigir(){
+  window.location.href = "../logout.php";
+}
+
+function resetearTemporizador () {
+  clearTimeout(temporizador); //limpia el temporizador anterior
+  temporizador = setTimeout(redirigir, tiempoInactividad); // Reinicia el temporizador
+}
+
+// Detectar actividad del usuario
+window.addEventListener("keydown", resetearTemporizador);
+window.addEventListener("mousemove", resetearTemporizador);
+window.addEventListener("scroll", resetearTemporizador);
+window.addEventListener("click", resetearTemporizador);
+window.addEventListener("touchstart", resetearTemporizador);
+
+resetearTemporizador(); // Iniciar el temporizador al iniciar la carga de la página
