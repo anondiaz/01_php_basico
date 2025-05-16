@@ -4,4 +4,4 @@
     <meta name="description" content="Aplicación de colores de usuarios">
     <meta name="author" content="Andres">
     <meta name="keywords" content="colores, usuarios, php, mysql">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">

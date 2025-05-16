@@ -1,7 +1,7 @@
 <?php
 
 // Para evitar que aparezcan los Warnings en el navegador
-error_reporting(0);
+// error_reporting(0);
 
 // Inicimos una session
 session_start();
@@ -14,7 +14,7 @@ require_once 'pdo_bind_connection.php';
 <html lang="es">
 <head>
     <!-- Las etiquetas meta y enlaces a ficheros las llamamos con php -->
-    <?php include_once 'etiquetas_meta.php'; ?>
+    <?php include_once 'modulos/etiquetas_meta.php'; ?>
     <title>Colores</title>
 </head>
 <body>
@@ -32,9 +32,9 @@ require_once 'pdo_bind_connection.php';
     </header> --> */?>
     <?php include_once 'modulos/header.php' ?>
     <main class="index-main">
-        <!-- Mostraremos un dialog para el login -->
-    <dialog id="login" open closedby="any">
-        <!-- Llamamos al login.php con el formulario-->
+        <section><img src="img/tipos-de-colores.webp" alt=""></section>
+        <section>
+                    <!-- Llamamos al login.php con el formulario-->
                 <form action="login.php" method="post">
             <fieldset>
                 <h1>Iniciar sesión</h1>
@@ -71,13 +71,10 @@ require_once 'pdo_bind_connection.php';
 
             </fieldset>
         </form>
-    </dialog>
+        </section>
+
     </main>
 
 
 </body>
 </html>
-<?php
-// Reseteamos las variables a false para que en la siguiente carga no se muestre el mensaje
-$_SESSION['error_cuenta'] = false;
-$_SESSION['user_inexistente'] = false;
