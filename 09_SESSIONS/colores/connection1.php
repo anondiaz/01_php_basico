@@ -10,7 +10,7 @@
 // $password = "";
 
 $server_name = "localhost";
-$bbdd = "colores";
+$bbdd = "colores_andres";
 $port = 3307;
 $user = "root";
 $password = "CIEF1234";

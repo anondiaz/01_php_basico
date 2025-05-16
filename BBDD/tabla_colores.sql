@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS colores;
-USE colores;
+CREATE DATABASE IF NOT EXISTS colores_andres;
+USE colores_andres;
 CREATE TABLE IF NOT EXISTS colores (
 id_color INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 usuario VARCHAR(15) NOT NULL,
@@ -70,7 +70,7 @@ password VARCHAR(255) NOT NULL
 
 CREATE USER colores@'%' IDENTIFIED BY 'colores';
 
-GRANT ALL PRIVILEGES ON colores.* TO colores@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION;
 
 USE colores;
 

@@ -3,7 +3,7 @@
 // php -S localhost:8001
 // Fichero de conexión : pdo_bind_connection.php
 $host = 'localhost';
-$dbname = 'colores';
+$dbname = 'colores_andres';
 $port = 3307;
 $username = 'colores';
 $password = 'colores';
