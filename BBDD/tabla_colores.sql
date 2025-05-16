@@ -68,11 +68,11 @@ password VARCHAR(255) NOT NULL
 
 -- DROP TABLE usuarios;
 
-CREATE USER colores@'%' IDENTIFIED BY 'colores';
+CREATE USER colores@'%' IDENTIFIED BY '13579#Colores';
 
 GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION;
 
-USE colores;
+USE colores_andres;
 
 ALTER TABLE colores
 ADD COLUMN id_usuario INT NOT NULL DEFAULT 1 ;
