@@ -68,9 +68,16 @@ password VARCHAR(255) NOT NULL
 
 -- DROP TABLE usuarios;
 
-CREATE USER colores@'%' IDENTIFIED BY '13579#Colores';
+USE colores_andres;
+CREATE USER colores@'%' IDENTIFIED BY '13579#Colores'; -- En casa
+CREATE USER colores@'%' IDENTIFIED BY 'colores'; -- En CIEF 
 
-GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON colores.* TO colores@'%' WITH GRANT OPTION; -- Ejercicio profe
+GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION; -- Mi versión del ejercicio
+
+INSERT INTO usuarios (usuario, password)
+VALUES
+("prueba01", "$2y$10$2Ho9JT8iU1otQMI7P4A9gul/DkjjVg1QWx0eT4bqfC6ZrDLsn7M5y");
 
 USE colores_andres;
 
