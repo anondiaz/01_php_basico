@@ -1,5 +1,5 @@
 <!-- Preparamos el formulario de creacion de usuario -->
-<form action="insert_user.php" method="post">
+<form action="insert_temporal.php" method="post">
     <fieldset>
         <h2>Crear cuenta</h2>
         <div>

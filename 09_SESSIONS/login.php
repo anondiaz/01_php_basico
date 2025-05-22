@@ -53,7 +53,22 @@ if (!password_verify($password, $usuarioExistente['password'])) {
 
 // Si es ok, mostramos un mensaje
 echo "Todo OK";
+// sintaxis basica de setcookie
+// que, dato, tiempo, ruta de validez
+setcookie('usuario', $usuarioExistente['$usuario'], time() + 60, '/'); // Guardamos el usuario en una cookie por 1 minuto
 
+
+// setcookie(
+//     'usuario',
+//      $usuarioExistente['$usuario'], [
+//         'expires' => time() + 60, // 1 minuto
+//         'path' => '/', // Ruta de validez, la cookie es accesible desde cualquie ruta del proyecto
+//         // 'domain' => $_SERVER['HTTP_HOST'], // Dominio
+//         'secure' => true, // Solo por https ojo con xampp o localhost
+//         'httponly' => true, // Solo por http solo par el servidor
+//         'samesite' => 'Strict', // Solo para el mismo sitio, enlaces desde la barra de direcciones del navegador
+//         // 'samesite' => 'Lax', // Solo para el mismo sitio, enlaces desde otros lugares, por ejemplo un enlace en un correo
+// ]);
 
 
 // O redirigimos a otra página

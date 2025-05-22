@@ -1,7 +1,15 @@
 <header>
     <div>
-        <h1>Nuestros colores preferidos</h1>
         <div>
+        <h1>Nuestros colores preferidos</h1>
+        </div>
+        <div>
+            <div class="header-right">
+                <?php if(isset($_COOKIE['usuario'])) : ?>
+                    <span>Hola <?= $_COOKIE['usuario'] ?>!</span>
+                <?php else : ?>
+                    <span>Por favor inicia sesion!</span>
+                <?php endif; ?>
             <!-- El saludo y el boton de logout solo se muestran si el usuario ha iniciado sesión -->
             <?php if (isset($_SESSION['usuario'])) : ?>
                 <span>¡Hola <?= $_SESSION['usuario'] ?>!</span>
@@ -9,6 +17,7 @@
                     <button id="btnLogout" type="submit"><i class="fa-solid fa-door-open"></i></button>
                 </form>
             <?php endif; ?>
+            </div>
             <!-- El formulario de idioma se muestra siempre -->
             <?php
             $rutaIdioma = "modulos/idioma.php";

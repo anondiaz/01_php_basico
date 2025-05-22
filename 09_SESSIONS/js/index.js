@@ -1,3 +1,6 @@
+
+
+
 // Obtener el idioma del navegador
 var idioma = navigator.language || navigator.userLanguage || "es";
 
@@ -12,6 +15,7 @@ formIdioma.addEventListener("change", () => {
   // alert("El idioma ha cambiado");
   //   console.log(jsonIdiomas[idioma["title"]]);
   // Llamar a la función que cargará el idioma
+  document.cookie = `language=${idioma}; path=/; max-age=${60}`;
   cambiarIdioma(idioma);
 });
 
