@@ -25,7 +25,7 @@ try {
 
     //Recipients
     // $mail->setFrom('hola@dom.com', 'El que envia'); // El que envia
-    $mail->addAddress('anondiaz@gmail.com', 'Andres dest');     //Add a recipient
+    $mail->addAddress('testing-desarrollo@proton.me', 'Andres destino');     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');

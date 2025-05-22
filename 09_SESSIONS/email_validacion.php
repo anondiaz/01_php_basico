@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 // require '../vendor/autoload.php';
 require_once __DIR__ . "/vendor/autoload.php";
 
+// Cargamos las variables de entorno, en este caso las de acceso al servidor de correo
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -23,13 +24,12 @@ try {
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = $_ENV['USERNAME']; //'hola@dom.com';                     //SMTP username
     $mail->Password   = $_ENV['PASSWORD']; // '1234';                               //SMTP password //
-    // require 'email_access_data.php';                             // incluimos fichero con el password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
     $mail->setFrom($_ENV['USERNAME'], 'El que envia'); // 'hola@dom.com', 'El que envia'); // El que envia
-    $mail->addAddress('anondiaz@gmail.com', 'Andres dest');     //Add a recipient
+    $mail->addAddress($email, $usuario);     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');

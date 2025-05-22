@@ -23,11 +23,31 @@ header {
   background-color: rgb(20, 20, 20);
   color: white;
   padding: 1rem 0;
-
+display: flex;
+  justify-content: space-around;
   h1 {
     text-align: left;
   }
+    img {
+    max-width: 50px;
+  }
+  .header-left {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 
+  .header-right {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+    align-items: center;
+
+    span {
+      font-size: 1.2rem;
+      color: white;
+    }
+  }
   > div {
     display: flex;
     justify-content: space-between;
@@ -36,17 +56,7 @@ header {
     margin: 0 auto;
   
 
-    div {
-      display: flex;
-      justify-content: right;
-      gap: 1rem;
-      align-items: center;
 
-      span {
-        font-size: 1.2rem;
-        color: white;
-      }
-    }
 
     #btnLogout {
       background-color: transparent;

@@ -82,13 +82,15 @@ $stmt->bindParam(':token_cad', $token_cad, PDO::PARAM_STR);
 $stmt->execute();
 
 // Mostramos mensaje de inserción correcta
-echo "Usuario insertado correctamente<br>";
+// echo "Usuario insertado correctamente<br>";
 
 $body = "<p>Hola $usuario,</p><br>";
 $body .= "<p>Gracias por registrarte en nuestra aplicación. Para completar el proceso de registro, por favor haz clic en el siguiente enlace:</p><br>";
-$body .= "<p><a href='http://localhost/09_SESSIONS/registro.php?token=$token_val' >HAZ CLICK PARA VALIDAR TU CUENTA</a></p><br>";
+$body .= "<p><a href='http://localhost/01_php_basico_UF1844/09_SESSIONS/registro.php?token=$token_val' >HAZ CLICK PARA VALIDAR TU CUENTA</a></p><br>";
 $body .= "<p>Si no te has registrado en nuestra aplicación, por favor ignora este mensaje.</p><br>";
 $body .= "<p>Saludos,<br>El equipo de sotorpe</p><br>";
 
 include 'email_validacion.php'; // incluimos fichero con el password
+
+header('location: index.php?formulario=revisar-correo');
 

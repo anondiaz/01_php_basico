@@ -1,31 +1,30 @@
 <header>
     <div>
-        <div>
-        <h1>Nuestros colores preferidos</h1>
+        <div class="header-left">
+             <?php if (!isset($_SESSION['usuario'])) : ?>
+            <img src="icons/paint_114370.png" alt="">
+             <?php endif; ?>
+             <h1>Nuestros colores preferidos</h1>
         </div>
-        <div>
-            <div class="header-right">
+
+        <div class="header-right">
                 <?php if(isset($_COOKIE['usuario'])) : ?>
-                    <span>Hola <?= $_COOKIE['usuario'] ?>!</span>
+                    <span>¡Hola <?= $_COOKIE['usuario'] ?>!</span>
                 <?php else : ?>
-                    <span>Por favor inicia sesion!</span>
+                    <span>Por favor inicia sesion</span>
                 <?php endif; ?>
             <!-- El saludo y el boton de logout solo se muestran si el usuario ha iniciado sesión -->
-            <?php if (isset($_SESSION['usuario'])) : ?>
-                <span>¡Hola <?= $_SESSION['usuario'] ?>!</span>
-                <form action="../logout.php" method="post">
+                        <form action="../logout.php" method="post">
+                    <?php if (isset($_SESSION['usuario'])) : ?>                
                     <button id="btnLogout" type="submit"><i class="fa-solid fa-door-open"></i></button>
                 </form>
             <?php endif; ?>
-            </div>
-            <!-- El formulario de idioma se muestra siempre -->
             <?php
-            $rutaIdioma = "modulos/idioma.php";
-            if (isset($_SESSION['usuario'])) {
-                $rutaIdioma = "../modulos/idioma.php";
-            }
+                $rutaIdioma = "modulos/idioma.php";
+                if (isset($_SESSION['usuario'])) {
+                    $rutaIdioma = "../modulos/idioma.php";
+                }
             ?>
-            <!-- Montamos el formulario de idioma -->
             <form action="<?= $rutaIdioma ?>" name="form-idioma" method="post">
                 <select name="select-idioma" id="select-idioma">
                     <option value="es">ESP</option>
