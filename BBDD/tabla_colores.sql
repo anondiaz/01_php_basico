@@ -69,13 +69,13 @@ password VARCHAR(255) NOT NULL
 -- DROP TABLE usuarios;
 
 CREATE TABLE temporal(
-id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+id_temporal INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 usuario VARCHAR(50) NOT NULL,
 email VARCHAR(100),
 telefono VARCHAR(15),
 password VARCHAR(255) NOT NULL,
-token_registro VARCHAR(100),
-token_caducidad VARCHAR(15)
+token_registro  varchar(128) DEFAULT NULL,
+token_caducidad datetime DEFAULT NULL
 );
 
 USE colores_andres;
