@@ -68,6 +68,16 @@ password VARCHAR(255) NOT NULL
 
 -- DROP TABLE usuarios;
 
+CREATE TABLE temporal(
+id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+usuario VARCHAR(50) NOT NULL,
+email VARCHAR(100),
+telefono VARCHAR(15),
+password VARCHAR(255) NOT NULL,
+token_registro VARCHAR(100),
+token_caducidad VARCHAR(15)
+);
+
 USE colores_andres;
 CREATE USER colores@'%' IDENTIFIED BY '13579#Colores'; -- En casa
 CREATE USER colores@'%' IDENTIFIED BY 'colores'; -- En CIEF 

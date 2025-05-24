@@ -15,7 +15,7 @@ try {
     //Server settings
     $mail->SMTPDebug = 0; // SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    // $mail->Host       = 'smtp.dom.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     // $mail->Username   = 'hola@dom.com';                     //SMTP username
     // $mail->Password   = '1234';                               //SMTP password //
@@ -25,7 +25,7 @@ try {
 
     //Recipients
     // $mail->setFrom('hola@dom.com', 'El que envia'); // El que envia
-    $mail->addAddress('testing-desarrollo@proton.me', 'Andres destino');     //Add a recipient
+    // $mail->addAddress('hola2@dom.com', 'El que recibe');     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
