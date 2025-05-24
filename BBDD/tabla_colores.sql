@@ -78,6 +78,8 @@ token_registro  varchar(128) DEFAULT NULL,
 token_caducidad datetime DEFAULT NULL
 );
 
+-- DROP TABLE temporal;
+
 USE colores_andres;
 CREATE USER colores@'%' IDENTIFIED BY '13579#Colores'; -- En casa
 CREATE USER colores@'%' IDENTIFIED BY 'colores'; -- En CIEF 
