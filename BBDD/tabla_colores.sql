@@ -1,3 +1,4 @@
+-- DROP DATABASE colores_andres;
 CREATE DATABASE IF NOT EXISTS colores_andres;
 USE colores_andres;
 CREATE TABLE IF NOT EXISTS colores (
@@ -58,7 +59,7 @@ INSERT INTO colores (color, usuario) VALUES ("green", "Son Goku");
 INSERT INTO colores (color, usuario) VALUES ("blue","Bulma");
 INSERT INTO colores (usuario, color) VALUES ("Vegeta", "red");
 
-CREATE TABLE usuarios(
+CREATE TABLE IF NOT EXISTS usuarios(
 id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 usuario VARCHAR(50) NOT NULL,
 email VARCHAR(100),
@@ -68,7 +69,7 @@ password VARCHAR(255) NOT NULL
 
 -- DROP TABLE usuarios;
 
-CREATE TABLE temporal(
+CREATE TABLE IF NOT EXISTS temporal(
 id_temporal INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 usuario VARCHAR(50) NOT NULL,
 email VARCHAR(100),
@@ -81,11 +82,11 @@ token_caducidad datetime DEFAULT NULL
 -- DROP TABLE temporal;
 
 USE colores_andres;
-CREATE USER colores@'%' IDENTIFIED BY '13579#Colores'; -- En casa
-CREATE USER colores@'%' IDENTIFIED BY 'colores'; -- En CIEF 
+-- CREATE USER colores@'%' IDENTIFIED BY '13579#Colores'; -- En casa
+-- CREATE USER colores@'%' IDENTIFIED BY 'colores'; -- En CIEF 
 
-GRANT ALL PRIVILEGES ON colores.* TO colores@'%' WITH GRANT OPTION; -- Ejercicio profe
-GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION; -- Mi versión del ejercicio
+-- GRANT ALL PRIVILEGES ON colores.* TO colores@'%' WITH GRANT OPTION; -- Ejercicio profe
+-- GRANT ALL PRIVILEGES ON colores_andres.* TO colores@'%' WITH GRANT OPTION; -- Mi versión del ejercicio
 
 INSERT INTO usuarios (usuario, password)
 VALUES

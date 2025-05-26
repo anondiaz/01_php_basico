@@ -70,7 +70,7 @@ formInsert.addEventListener('submit', (e) => {
 
     })
   
-const tiempoInactividad = 5000; // 60000ms = 1 minuto, se mide en milisegundos (minutos x 60 x 1000)
+const tiempoInactividad = 6000000; // 60000ms = 1 minuto, se mide en milisegundos (minutos x 60 x 1000)
 
 let temporizador ;
 
