@@ -75,7 +75,10 @@ include_once 'modulos/idioma.php';
                 case 'reset':
                     include_once 'modulos/form_reset.php';
                     break;
-                case 'revisar-correo':
+                case 'token-caducado':
+                    include_once 'modulos/token-caducado.php';
+                    break;
+                    case 'revisar-correo':
                     include_once 'modulos/revisar_cuenta_correo.php';
                     break;
                 default:

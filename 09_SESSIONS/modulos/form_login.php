@@ -1,6 +1,11 @@
 <!-- Preparamos el formulario de login
 Este formulario se mostrará si el usuario no ha iniciado sesión -->
 <form action="login.php" method="post">
+    <?php if(isset($_GET['mensaje']) && $_GET['mensaje'] == 'registro_ok'):?>
+        <p>Ya puedes introducir tus datos, <?= $_SESSION['nombre-usuario']?></p>
+    <?php endif; ?>
+
+        <p class="mensaje-ok">¡Registro completado! Ahora puedes iniciar sesión.</p>
     <fieldset>
         <h2>Iniciar sesión</h2>
         <div>
